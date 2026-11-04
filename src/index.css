@@ -1,0 +1,190 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  body {
+    font-family: 'Cairo', 'Alexandria', sans-serif;
+    direction: rtl;
+  }
+}
+
+/* Modern dialog modal rules */
+dialog:modal {
+  overscroll-behavior: contain;
+}
+
+dialog::backdrop {
+  overflow: hidden;
+  overscroll-behavior: contain;
+  background-color: rgba(15, 23, 42, 0.55);
+  backdrop-filter: blur(4px);
+}
+
+/* Custom Scrollbar */
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+::-webkit-scrollbar-thumb {
+  background: #cbd5e1;
+  border-radius: 9999px;
+}
+.dark ::-webkit-scrollbar-thumb {
+  background: #334155;
+}
+
+/* ------------------------------------------------------------- */
+/* 4 THEMES ENGINE */
+/* ------------------------------------------------------------- */
+
+/* 1. Light Mode (Default) */
+[data-theme="light"] body {
+  background-color: #F8FAFC;
+  color: #0F172A;
+}
+
+/* 2. Midnight Dark Mode (OLED) */
+[data-theme="midnight"] body, .dark[data-theme="midnight"] body {
+  background-color: #0B0F17 !important;
+  color: #F8FAFC !important;
+}
+[data-theme="midnight"] .bg-white {
+  background-color: #111827 !important;
+  border-color: #1F2937 !important;
+}
+[data-theme="midnight"] aside {
+  background-color: #070A0F !important;
+}
+
+/* 3. Warm Sepia Theme (ورق دافئ كلاسيكي) */
+[data-theme="sepia"] body {
+  background-color: #F5EFE6 !important;
+  color: #2D241E !important;
+}
+[data-theme="sepia"] .bg-white {
+  background-color: #FAF6F0 !important;
+  border-color: #E6DCB8 !important;
+}
+[data-theme="sepia"] aside {
+  background-color: #261D16 !important;
+}
+[data-theme="sepia"] header {
+  background-color: rgba(250, 246, 240, 0.95) !important;
+  border-color: #E6DCB8 !important;
+}
+
+/* 4. Emerald Forest Theme (غابة الزمرد والتركيز الهادئ) */
+[data-theme="forest"] body, .dark[data-theme="forest"] body {
+  background-color: #061410 !important;
+  color: #ECFDF5 !important;
+}
+[data-theme="forest"] .bg-white {
+  background-color: #0B211B !important;
+  border-color: #16382E !important;
+}
+[data-theme="forest"] aside {
+  background-color: #030C0A !important;
+}
+[data-theme="forest"] header {
+  background-color: rgba(11, 33, 27, 0.95) !important;
+  border-color: #16382E !important;
+}
+
+/* A4 Lined Paper styling */
+.a4-lined-sheet {
+  min-height: 842px;
+  box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.08), 0 8px 10px -6px rgba(0, 0, 0, 0.04);
+  position: relative;
+  transition: all 0.2s ease;
+}
+
+/* 1. Standard Ruled */
+.paper-style-ruled {
+  background-color: var(--sheet-bg, #ffffff);
+  background-image: 
+    linear-gradient(90deg, transparent calc(100% - 60px), rgba(239, 68, 68, 0.45) calc(100% - 60px), rgba(239, 68, 68, 0.45) calc(100% - 58px), transparent calc(100% - 58px)),
+    repeating-linear-gradient(transparent, transparent 31px, rgba(148, 163, 184, 0.35) 31px, rgba(148, 163, 184, 0.35) 32px);
+  line-height: 32px;
+}
+
+/* 2. College Ruled */
+.paper-style-college {
+  background-color: var(--sheet-bg, #ffffff);
+  background-image: 
+    linear-gradient(90deg, transparent calc(100% - 50px), rgba(239, 68, 68, 0.45) calc(100% - 50px), rgba(239, 68, 68, 0.45) calc(100% - 48px), transparent calc(100% - 48px)),
+    repeating-linear-gradient(transparent, transparent 23px, rgba(148, 163, 184, 0.3) 23px, rgba(148, 163, 184, 0.3) 24px);
+  line-height: 24px;
+}
+
+/* 3. Grid / Math Paper */
+.paper-style-grid {
+  background-color: var(--sheet-bg, #ffffff);
+  background-image: 
+    linear-gradient(rgba(148, 163, 184, 0.25) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(148, 163, 184, 0.25) 1px, transparent 1px);
+  background-size: 24px 24px;
+  line-height: 24px;
+}
+
+/* 4. Dotted Paper */
+.paper-style-dotted {
+  background-color: var(--sheet-bg, #ffffff);
+  background-image: radial-gradient(rgba(100, 116, 139, 0.35) 1px, transparent 1px);
+  background-size: 20px 20px;
+  line-height: 28px;
+}
+
+/* 5. Blank Paper */
+.paper-style-blank {
+  background-color: var(--sheet-bg, #ffffff);
+  line-height: 28px;
+}
+
+.a4-editor-content {
+  min-height: 720px;
+  outline: none;
+}
+
+.a4-editor-content p, .a4-editor-content div {
+  margin: 0;
+  min-height: 1.5em;
+}
+
+.a4-editor-content a {
+  color: #2563eb;
+  text-decoration: underline;
+  cursor: pointer;
+  font-weight: 600;
+  transition: color 0.15s ease;
+  display: inline-flex;
+  align-items: center;
+  gap: 2px;
+}
+
+.a4-editor-content a:hover {
+  color: #1d4ed8;
+}
+
+.a4-editor-content h1, .a4-editor-content h2, .a4-editor-content h3 {
+  font-weight: 800;
+  margin-top: 0.5rem;
+  margin-bottom: 0.5rem;
+}
+
+.a4-editor-content h1 { font-size: 1.5rem; }
+.a4-editor-content h2 { font-size: 1.25rem; }
+.a4-editor-content h3 { font-size: 1.1rem; }
+
+.a4-editor-content ul {
+  list-style-type: disc;
+  padding-right: 1.5rem;
+}
+
+.a4-editor-content ol {
+  list-style-type: decimal;
+  padding-right: 1.5rem;
+}
